@@ -4,7 +4,9 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.ysj.vhr.mapper.EmployeeMapper;
 import com.ysj.vhr.model.Employee;
+import com.ysj.vhr.model.RespBean;
 import com.ysj.vhr.model.RespPageBean;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -12,7 +14,7 @@ import tk.mybatis.mapper.entity.Example;
 
 import java.util.Date;
 import java.util.List;
-
+@Slf4j
 @Service
 public class EmployeeService {
     @Autowired
@@ -57,5 +59,19 @@ public class EmployeeService {
         bean.setTotal(pageInfo.getTotal());
         bean.setData(employeeList);
         return bean;
+    }
+
+    public RespBean deleteById(Integer id) {
+        try {
+            int i = employeeMapper.deleteByPrimaryKey(id);
+            if (i != 1){
+                log.info("删除employee失败，请检查参数");
+               return RespBean.error("删除employee失败，请检查参数");
+            }else {
+               return RespBean.ok("删除成功");
+            }
+        } catch (Exception e) {
+           return RespBean.error("该数据有关联数据，操作失败");
+        }
     }
 }

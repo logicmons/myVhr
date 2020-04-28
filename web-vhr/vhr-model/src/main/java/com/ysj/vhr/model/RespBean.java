@@ -34,7 +34,7 @@ public class RespBean {
         return new RespBean(500, msg, obj);
     }
 
-    private RespBean() {
+    public RespBean() {
     }
 
     private RespBean(Integer status, String msg, Object obj) {

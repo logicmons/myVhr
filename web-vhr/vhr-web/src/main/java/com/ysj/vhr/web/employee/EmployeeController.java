@@ -1,12 +1,7 @@
 package com.ysj.vhr.web.employee;
 
-import com.ysj.vhr.model.Department;
-import com.ysj.vhr.model.Employee;
-import com.ysj.vhr.model.Position;
-import com.ysj.vhr.model.RespPageBean;
-import com.ysj.vhr.service.DepartmentService;
-import com.ysj.vhr.service.EmployeeService;
-import com.ysj.vhr.service.PositionService;
+import com.ysj.vhr.model.*;
+import com.ysj.vhr.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +20,15 @@ public class EmployeeController {
 
     @Autowired
     private DepartmentService departmentService;
+
+    @Autowired
+    private NationService nationService;
+
+    @Autowired
+    private JobLevelService jobLevelService;
+
+    @Autowired
+    private PoliticsstatusService politicsstatusService;
     /**
      * 分页查询Employee
      */
@@ -46,8 +50,44 @@ public class EmployeeController {
        return positionService.getAllPosition();
     }
 
+    /**
+     *查询所有部门
+     */
     @GetMapping("/deps")
     public List<Department> findAllDepartment(){
         return departmentService.findAllDepartment();
+    }
+
+    /**
+     * 查询所有民族
+     */
+    @GetMapping("/nations")
+    public List<Nation> findAllNations(){
+        return nationService.findAllNations();
+    }
+
+    /**
+     * 查询所有职位等级
+     */
+    @GetMapping("/joblevels")
+    public List<JobLevel> findAllJobLevel(){
+        return jobLevelService.findAllJobLevel();
+    }
+
+    /**
+     * 查询所有职位等级
+     */
+    @GetMapping("/politicsstatus")
+    public List<Politicsstatus> findAllPoliticsstatus(){
+        return politicsstatusService.findAllPoliticsstatus();
+    }
+
+    /**
+     * 根据id删除单个employee
+     */
+
+    @DeleteMapping("/{id}")
+    public RespBean deleteEmpById(@PathVariable("id") Integer id){
+        return employeeService.deleteById(id);
     }
 }
