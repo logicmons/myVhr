@@ -1,16 +1,22 @@
 package com.ysj.vhr.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import tk.mybatis.mapper.annotation.KeySql;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
-
+@Table(name = "joblevel")
 public class JobLevel implements Serializable {
+    @Id
+    @KeySql(useGeneratedKeys = true)
     private Integer id;
 
     private String name;
-
+    @Column(name = "titleLevel")
     private String titleLevel;
 
     @Override
@@ -37,6 +43,7 @@ public class JobLevel implements Serializable {
     }
 
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    @Column(name = "createDate")
     private Date createDate;
 
     private Boolean enabled;

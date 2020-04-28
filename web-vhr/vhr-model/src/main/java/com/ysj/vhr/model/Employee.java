@@ -1,66 +1,103 @@
 package com.ysj.vhr.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import tk.mybatis.mapper.annotation.KeySql;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.io.Serializable;
 import java.util.Date;
-
-public class Employee {
+@Table(name = "employee")
+public class Employee implements Serializable {
+    @Id
+    @KeySql(useGeneratedKeys = true)
     private Integer id;
     private String name;
     private String gender;
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date birthday;
+    @Column(name = "idCard")
     private String idCard;
+
     private String wedlock;
+
+    @Column(name = "nationId")
     private Integer nationId;
+
+    @Column(name = "nativePlace")
     private String nativePlace;
+
+    @Column(name = "politicId")
     private Integer politicId;
+
     private String email;
 
     private String phone;
 
     private String address;
 
+    @Column(name = "departmentId")
     private Integer departmentId;
 
+    @Column(name = "jobLevelId")
     private Integer jobLevelId;
 
+    @Column(name = "posId")
     private Integer posId;
 
+    @Column(name = "engageForm")
     private String engageForm;
-
+    @Column(name = "engageForm")
     private String tiptopDegree;
 
     private String specialty;
 
     private String school;
+
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    @Column(name = "beginDate")
     private Date beginDate;
 
+    @Column(name = "workState")
     private String workState;
 
+    @Column(name = "workID")
     private String workID;
 
+    @Column(name = "contractTerm")
     private Double contractTerm;
 
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    @Column(name = "conversionTime")
     private Date conversionTime;
 
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    @Column(name = "notWorkDate")
     private Date notWorkDate;
 
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    @Column(name = "beginContract")
     private Date beginContract;
 
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    @Column(name = "endContract")
     private Date endContract;
 
+    @Transient
     private Integer workAge;
+    @Transient
     private Nation nation;
+    @Transient
     private Politicsstatus politicsstatus;
+    @Transient
     private Department department;
+    @Transient
     private JobLevel jobLevel;
+    @Transient
     private Position position;
+    @Transient
     private Salary salary;
 
     public Salary getSalary() {

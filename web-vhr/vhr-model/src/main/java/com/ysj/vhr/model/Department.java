@@ -1,15 +1,24 @@
 package com.ysj.vhr.model;
 
+import tk.mybatis.mapper.annotation.KeySql;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
+@Table(name = "department")
 public class Department implements Serializable {
+    @Id
+    @KeySql(useGeneratedKeys = true)
     private Integer id;
 
     private String name;
 
+    @Column(name = "parentId")
     private Integer parentId;
 
     public Department() {
@@ -34,13 +43,18 @@ public class Department implements Serializable {
 
         return Objects.hash(name);
     }
-
+    @Column(name = "depPath")
     private String depPath;
 
     private Boolean enabled;
 
+    @Column(name = "isParent")
     private Boolean isParent;
+
+    @Transient
     private List<Department> children = new ArrayList<>();
+
+    @Transient
     private Integer result;
 
     public Integer getResult() {

@@ -1,7 +1,7 @@
 package com.ysj.vhr.mapper;
 
 import com.ysj.vhr.model.Hr;
-import org.apache.ibatis.annotations.Mapper;
+
 import org.apache.ibatis.annotations.Select;
 import tk.mybatis.mapper.common.BaseMapper;
 

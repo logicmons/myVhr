@@ -1,12 +1,12 @@
 package com.ysj.vhr.mapper;
 
 
+import com.ysj.vhr.config.BaseMapper;
 import com.ysj.vhr.model.Menu;
 import com.ysj.vhr.model.Meta;
 import com.ysj.vhr.model.Role;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
-import tk.mybatis.mapper.common.BaseMapper;
 
 import java.util.List;
 

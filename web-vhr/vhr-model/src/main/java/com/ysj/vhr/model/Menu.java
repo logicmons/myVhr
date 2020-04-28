@@ -1,9 +1,18 @@
 package com.ysj.vhr.model;
 
+import tk.mybatis.mapper.annotation.KeySql;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.util.List;
 
+@Table(name = "menu")
 public class Menu implements Serializable {
+    @Id
+    @KeySql(useGeneratedKeys = true)
     private Integer id;
 
     private String url;
@@ -14,14 +23,17 @@ public class Menu implements Serializable {
 
     private String name;
 
+    @Column(name = "iconCls")
     private String iconCls;
 
     private Meta meta;
-
+    @Column(name = "parentId")
     private Integer parentId;
 
     private Boolean enabled;
+    @Transient
     private List<Menu> children;
+    @Transient
     private List<Role> roles;
 
     public List<Role> getRoles() {
