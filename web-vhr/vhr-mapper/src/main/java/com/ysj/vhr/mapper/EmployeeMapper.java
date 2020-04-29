@@ -66,4 +66,12 @@ public interface EmployeeMapper extends BaseMapper<Employee> {
             }.toString();
         }
     }
+
+    @Select("SELECT max(`workID`) FROM `employee`")
+    Integer selectMaxWorkID();
+
+    @Select("select * from `employee` where id = #{id}")
+
+    @ResultMap("empMapwithAll")
+    Employee selectEmpById(Integer id);
 }

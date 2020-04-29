@@ -3,7 +3,6 @@ package com.ysj.vhr.web.employee;
 import com.ysj.vhr.model.*;
 import com.ysj.vhr.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -89,5 +88,26 @@ public class EmployeeController {
     @DeleteMapping("/{id}")
     public RespBean deleteEmpById(@PathVariable("id") Integer id){
         return employeeService.deleteById(id);
+    }
+
+    /*
+    * 修改employee
+    */
+    @PutMapping("/")
+    public RespBean updateEmployee(@RequestBody Employee employee){
+        return employeeService.updateEmployee(employee);
+    }
+
+    @GetMapping("/maxWorkID")
+    public RespBean maxWorkID(){
+        return employeeService.maxWorkID();
+    }
+
+    /**
+     * 添加新员工
+     */
+    @PostMapping("/")
+    public RespBean addEmp(@RequestBody Employee employee){
+        return employeeService.addEmp(employee);
     }
 }

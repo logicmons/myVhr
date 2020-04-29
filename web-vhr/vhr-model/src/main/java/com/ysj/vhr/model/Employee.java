@@ -49,7 +49,8 @@ public class Employee implements Serializable {
 
     @Column(name = "engageForm")
     private String engageForm;
-    @Column(name = "engageForm")
+
+    @Column(name = "tiptopDegree")
     private String tiptopDegree;
 
     private String specialty;
