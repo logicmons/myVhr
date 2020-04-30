@@ -151,9 +151,10 @@ public class EmployeeService {
         mailSendLogService.addMailSendLog(mailSendLog);
 
         //调用消息队列
+        CorrelationData data = new CorrelationData(msgId);
         rabbitTemplate.convertAndSend(MailConstants.MAIL_EXCHANGE_NAME,
                 MailConstants.MAIL_ROUTING_KEY_NAME,
-                emp,new CorrelationData(msgId));
+                emp,data);
 
         return RespBean.ok("新增emp成功");
     }

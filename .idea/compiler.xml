@@ -11,11 +11,13 @@
         <module name="vhr-service" />
         <module name="vhr-mapper" />
         <module name="vhr-model" />
+        <module name="mailServer" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="mailServer" options="-parameters" />
       <module name="vhr-mapper" options="-parameters" />
       <module name="vhr-model" options="-parameters" />
       <module name="vhr-service" options="-parameters" />

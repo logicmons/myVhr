@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.text.ParseException;
@@ -18,6 +19,9 @@ import java.util.Date;
 public class EmployeeServiceTest {
     @Autowired
     private EmployeeService employeeService;
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
     @Autowired
     private NationMapper nationMapper;
@@ -61,4 +65,6 @@ public class EmployeeServiceTest {
         RespBean respBean = employeeService.addEmp(employee);
 
     }
+
+
 }

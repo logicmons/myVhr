@@ -1,0 +1,27 @@
+server:
+  port: 8082
+spring:
+  mail:
+    host: smtp.qq.com
+    username: jiayouysj@foxmail.com
+    password: wowmqnowekgedgji
+    default-encoding: UTF-8
+    port: 587
+    properties:
+      mail:
+        stmp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+        debug: true
+  rabbitmq:
+    host: 49.235.235.143
+    username: vhr
+    password: vhr
+    listener:
+      simple:
+        acknowledge-mode: manual
+        prefetch: 100
+    virtual-host: /vhr
+  redis:
+            host: 49.235.235.143
+            port: 9999
